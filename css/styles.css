@@ -1,0 +1,97 @@
+body {
+	background-color: #ddd;
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+}
+.container {
+	background-color: #eee;
+	border-radius: 10px;
+	padding: 20px;
+}
+.container .title {
+	font-size: 2.3rem;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.container .form {
+	width: 100%;
+	max-width: 380px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(5, auto);
+	margin: 0 auto 15px;
+	gap: 7px;
+}
+.container .form .input {
+	height: 45px;
+	width: 100%;
+	background-color: #fff;
+	padding: 5px;
+	border: 3px #111 solid;
+	outline: none;
+	border-radius: 3px;
+	transition: all 180ms ease;
+}
+.container .form .input:focus {
+	border: 3px #08c solid;
+}
+.container .form .btnRegister {
+	width: 200px;
+	height: 50px;
+	background-color: #111;
+	border: none;
+	color: #fff;
+	font-size: 1.4rem;
+	border-radius: 5px;
+	margin: 0 auto;
+	transition: all 250ms ease;
+}
+.container .form .btnRegister:hover {
+	background-color: #07c;
+	cursor: pointer;
+}
+.container .form .btnRegister:active {
+	background-color: #09f;
+}
+.container .studentsGroup {
+	display: grid;
+	grid-template-columns: 1fr;
+	background-color: #011533;
+	padding: 2.5px 5px;
+	border-radius: 5px;
+}
+.container .studentsGroup .student {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr) auto auto;
+	gap: 5px;
+}
+.container .studentsGroup .student * {
+	background-color: #fff;
+	margin: 2.5px 0;
+	padding: 3px;
+	color: #222;
+}
+.container .studentsGroup .student .btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: #fff;
+	transition: all 200ms ease;
+	width: 100px;
+}
+.container .studentsGroup .student .btnUpdate {
+	background-color: #06c;
+}
+.container .studentsGroup .student .btnUpdate:hover {
+	background-color: #07d;
+}
+.container .studentsGroup .student .btnDelete {
+	background-color: #c00;
+}
+.container .studentsGroup .student .btnDelete:hover {
+	background-color: #f00
+}
