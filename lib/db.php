@@ -5,6 +5,7 @@
 		private $user;
 		private $password;
 		private $database;
+		private $table;
 
 		public function __construct($server, $user, $password, $database) {
 			$this->server = $server;
@@ -17,25 +18,28 @@
 			return mysqli_connect($this->server, $this->user, $this->password, $this->database);
 		}
 
-		public function setStudent($doc, $docType, $name, $lastName, $age) {
-			return mysqli_query($this->connect(), "INSERT INTO tblestudiantes(documento, tipoDoc, nombre, apellido, edad) VALUES('$doc', '$docType', '$name', '$lastName', '$age')");
+		public function setTable($table) {
+			return $this->table = $table;
+		}
+
+		public function setStudent($doc, $docType, $name, $age) {
+			return mysqli_query($this->connect(), "INSERT INTO $this->table(doc, docType, name, age) VALUES('$doc', '$docType', '$name', '$age')");
 		}
 
 		public function getEstudents() {
-			return mysqli_query($this->connect(), "SELECT * FROM tblestudiantes");
+			return mysqli_query($this->connect(), "SELECT * FROM $this->table");
 		}
 
 		public function getStudent($doc) {
-			return mysqli_query($this->connect(), "SELECT * FROM tblestudiantes WHERE documento='$doc'");
+			return mysqli_query($this->connect(), "SELECT * FROM $this->table WHERE doc='$doc'");
 		}
 
-		public function updateStudent($doc, $docType, $name, $lastName, $age) {
-			return mysqli_query($this->connect(), "UPDATE tblestudiantes SET tipoDoc='$docType', nombre='$name', apellido='$lastName', edad='$age' WHERE documento='$doc'");
-			print($doc.$docType.$name.$lastName.$age);
+		public function updateStudent($doc, $docType, $name, $age) {
+			return mysqli_query($this->connect(), "UPDATE $this->table SET docType='$docType', name='$name' age='$age' WHERE doc='$doc'");
 		}
 
 		public function deleteStudent($doc) {
-			return mysqli_query($this->connect(), "DELETE FROM tblestudiantes WHERE documento='$doc'");
+			return mysqli_query($this->connect(), "DELETE FROM $this->table WHERE doc='$doc'");
 		}
 
 		public function close() {

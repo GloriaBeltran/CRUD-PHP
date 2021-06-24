@@ -15,11 +15,12 @@
 </head>
 <body>
 <?php
-	$db = new DB("localhost", "root", "", "dbcolegio");
+	$db = new DB("localhost", "root", "", "school");
+	$db->setTable("students");
 
 	$cases = [
-		"register" => $db->setStudent($_GET['doc'], $_GET['docType'], $_GET['name'], $_GET['lastName'], $_GET['age']),
-		"update" => $db->updateStudent($_GET['doc'], $_GET['docType'], $_GET['name'], $_GET['lastName'], $_GET['age']),
+		"register" => $db->setStudent($_GET['doc'], $_GET['docType'], $_GET['name'], $_GET['age']),
+		"update" => $db->updateStudent($_GET['doc'], $_GET['docType'], $_GET['name'], $_GET['age']),
 		"delete" => $db->deleteStudent($_GET['doc'])
 	];
 
@@ -37,7 +38,6 @@
 				<option value="CC">CC</option>
 			</select>
 			<input type="text" class="input" name="name" placeholder="Nombre">
-			<input type="text" class="input" name="lastName" placeholder="Apellido">
 			<input type="text" class="input" name="age" placeholder="Edad">
 			<button class="btnRegister" name="method" value="register">Registrar</button>
 		</form>
@@ -50,10 +50,9 @@
 							<h2 class="doc"><?php print $student[0] ?></h2>
 							<h2 class="docType"><?php print $student[1] ?></h2>
 							<h2 class="name"><?php print $student[2] ?></h2>
-							<h2 class="lastName"><?php print $student[3] ?></h2>
-							<h2 class="age"><?php print $student[4] ?></h2>
-							<a href="./updateStudent/?doc=<?php echo $student[0] ?>" class="btn btnUpdate">Actualizar</a>
-							<a href="./?method=delete&doc=<?php echo $student[0] ?>" class="btn btnDelete">Borrar</a>
+							<h2 class="age"><?php print $student[3] ?></h2>
+								<a href="./updateStudent/?doc=<?php echo $student[0] ?>" class="btn btnUpdate">Actualizar</a>
+								<a href="./?method=delete&doc=<?php echo $student[0] ?>" class="btn btnDelete">Borrar</a>
 						</div>
 					<?php
 				}

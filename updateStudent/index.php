@@ -14,21 +14,21 @@
 </head>
 <body>
 	<?php
-		$db = new DB("localhost", "root", "", "dbcolegio");
+		$db = new DB("localhost", "root", "", "school");
+		$db->setTable("students");
 		$data = mysqli_fetch_row($db->getStudent($_GET['doc']));
 	?>
 	<div class="container">
 		<form class="form" action="../">
-			<input type="number" style="display: none" name="doc" value=<?php print $data[0] ?>>
+			<input type="number" class="input" name="doc" value=<?php print $data[0] ?>>
 			<select name="docType" class="input">
 				<option value="default">Tipo de documento</option>
-				<option value="TI" <?php $data[1] == "TI" ? "selected" : "" ?>>TI</option>
-				<option value="CC" <?php $data[1] == "CC" ? "selected" : "" ?>>CC</option>
+				<option value="TI" <?php print $data[1] == "TI" ? "selected" : null ?>>TI</option>
+				<option value="CC" <?php print $data[1] == "CC" ? "selected" : null ?>>CC</option>
 			</select>
 			<input type="text" class="input" name="name" placeholder="Nombre" value=<?php print $data[2] ?>>
-			<input type="text" class="input" name="lastName" placeholder="Apellido" value=<?php print $data[3] ?>>
-			<input type="number" class="input" name="age" placeholder="Edad" value=<?php print $data[4] ?>>
-			<button class="btnRegister" name="update">Actualizar</button>
+			<input type="number" class="input" name="age" placeholder="Edad" value=<?php print $data[3] ?>>
+			<button class="btnRegister" name="method" value="update">Actualizar</button>
 		</form>
 	</div>
 </body>
