@@ -35,7 +35,7 @@
 		}
 
 		public function updateStudent($doc, $docType, $name, $age) {
-			return mysqli_query($this->connect(), "UPDATE $this->table SET docType='$docType', name='$name' age='$age' WHERE doc='$doc'");
+			return mysqli_query($this->connect(), "UPDATE $this->table SET docType='$docType', name='$name', age='$age' WHERE doc='$doc'");
 		}
 
 		public function deleteStudent($doc) {
